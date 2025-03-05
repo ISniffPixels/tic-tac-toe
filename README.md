@@ -1,2 +1,2 @@
 # tic-tac-toe
-This is an assignment for the Odin Project. I will be making a Tic Tac Toe game and learning about keeping track of game states and further use of addEventListeners. I will be practicing my CSS skills further more as well and create a clean and simple presentation.
+This is an assignment for the Odin Project. I will be making a Tic Tac Toe game and learning about keeping track of game states and further use of addEventListeners. I will be practicing my CSS skills further more as well and I will be creating a clean and simple presentation.
