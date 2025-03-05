@@ -1,12 +1,10 @@
 (function() {
     'use strict';
 
-    // Cached DOM elements
     const grid_cells = document.querySelectorAll('.grid_cell');
     const winner_text = document.querySelector('.winner_text');
     const restart_btn = document.querySelector('.restart_btn');
 
-    // Winning combinations
     const xo_match = [
         [0, 1, 2],
         [3, 4, 5],
@@ -18,12 +16,10 @@
         [2, 4, 6]
     ];
 
-    // Game state variables
     let cell_placeholders = ["", "", "", "", "", "", "", "", ""];
     let active_player = "X";
     let game_status = false;
 
-    // Initialize game and add event listeners
     function startGame() {
         grid_cells.forEach(cell => cell.addEventListener('click', clickCell));
         restart_btn.addEventListener('click', playAgain);
@@ -31,30 +27,25 @@
         game_status = true;
     }
 
-    // Handle cell click event
     function clickCell() {
         const cellIndex = this.getAttribute('cellIndex');
 
-        // Prevent moves on taken cells or when game is inactive
         if (cell_placeholders[cellIndex] !== "" || !game_status) return;
 
         updateCell(this, cellIndex);
         winnerStatus();
     }
 
-    // Update cell with active player's marker
     function updateCell(cell, index) {
         cell_placeholders[index] = active_player;
         cell.textContent = active_player;
     }
 
-    // Switch the active player
     function switchPlayer() {
         active_player = (active_player === "X") ? "O" : "X";
         winner_text.textContent = `${active_player}'s turn`;
     }
 
-    // Check the game for a win or draw
     function winnerStatus() {
         let winnerFound = false;
 
@@ -78,7 +69,6 @@
         }
     }
 
-    // Reset the game to play again
     function playAgain() {
         active_player = "X";
         cell_placeholders = ["", "", "", "", "", "", "", "", ""];
@@ -87,6 +77,5 @@
         game_status = true;
     }
 
-    // Start the game immediately upon script load
     startGame();
 })();
