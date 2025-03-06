@@ -1,6 +1,6 @@
-(function() {
-    'use strict';
+'use strict';
 
+(function() {
     const grid_cells = document.querySelectorAll('.grid_cell');
     const winner_text = document.querySelector('.winner_text');
     const restart_btn = document.querySelector('.restart_btn');
@@ -27,6 +27,7 @@
         game_status = true;
     }
 
+
     function clickCell() {
         const cellIndex = this.getAttribute('cellIndex');
 
@@ -49,14 +50,18 @@
     function winnerStatus() {
         let winnerFound = false;
 
-        for (let i = 0; i < xo_match.length; i++) {
-            const [a, b, c] = xo_match[i];
-            if (cell_placeholders[a] === "" || cell_placeholders[b] === "" || cell_placeholders[c] === "") continue;
-            if (cell_placeholders[a] === cell_placeholders[b] && cell_placeholders[b] === cell_placeholders[c]) {
+       for(let i=0; i < xo_match.length; i++) {
+            const winner = xo_match[i];
+            const cellA = cell_placeholders[winner[0]];
+            const cellB = cell_placeholders[winner[1]];
+            const cellC = cell_placeholders[winner[2]];
+
+            if(cellA === "" || cellB === "" || cellC === "") continue;
+            if(cellA === cellB && cellB === cellC) {
                 winnerFound = true;
                 break;
             }
-        }
+       }
 
         if (winnerFound) {
             winner_text.textContent = `${active_player} wins!`;
