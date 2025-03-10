@@ -9,20 +9,34 @@
 </head>
 <body>
     <div class="gameboard">
-        <h1>Tic Tac Toe</h1>
-        <div class="grid_container">
-            <div class="grid_cell" cellIndex="0"></div>
-            <div class="grid_cell" cellIndex="1"></div>
-            <div class="grid_cell" cellIndex="2"></div>
-            <div class="grid_cell" cellIndex="3"></div>
-            <div class="grid_cell" cellIndex="4"></div>
-            <div class="grid_cell" cellIndex="5"></div>
-            <div class="grid_cell" cellIndex="6"></div>
-            <div class="grid_cell" cellIndex="7"></div>
-            <div class="grid_cell" cellIndex="8"></div>
+    <div class="player_backboard">
+        <div class="players_names">
+            <div class="player_x"></div>
+            <div class="player_o"></div>
         </div>
+        <div class="players_scores">
+            <label>Score:</label>
+            <div class="score_x">0</div>
+            <label>Score:</label>
+            <div class="score_o">0</div>
+        </div>
+    </div>
         <h2 class="winner_text"></h2>
-        <button class="restart_btn">Play Again</button>
+        <div class="grid_container">
+            <div class="grid_cell" data-cell-index="0"></div>
+            <div class="grid_cell" data-cell-index="1"></div>
+            <div class="grid_cell" data-cell-index="2"></div>
+            <div class="grid_cell" data-cell-index="3"></div>
+            <div class="grid_cell" data-cell-index="4"></div>
+            <div class="grid_cell" data-cell-index="5"></div>
+            <div class="grid_cell" data-cell-index="6"></div>
+            <div class="grid_cell" data-cell-index="7"></div>
+            <div class="grid_cell" data-cell-index="8"></div>
+        </div>
+        <div class="button_container">
+            <button class="restart_btn">Play Again</button>
+            <button class="score_reset_btn">Score Reset</button>
+        </div>
     </div>
 </body>
 </html>
