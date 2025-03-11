@@ -74,3 +74,25 @@ body {
     flex-direction: column;
     gap: 10px;
 }
+
+.button_container {
+    margin-top: 10px;
+}
+
+.button_container .restart_btn, 
+.button_container .score_reset_btn {
+    all: unset;
+    font-size: 0.8rem;
+    font-weight: bolder;
+    border: 2px outset black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s linear;
+}
+
+.button_container .restart_btn:active, 
+.button_container .score_reset_btn:active {
+   transform: translateY(2px);
+}

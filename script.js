@@ -11,6 +11,7 @@
     const o = prompt("Enter name for player O...");
     const score_x = document.querySelector('.score_x');
     const score_o = document.querySelector('.score_o');
+    
     let store_scores = JSON.parse(localStorage.getItem("store_scores")) || {player_x: 0, player_o: 0}
 
     const xo_match = [
