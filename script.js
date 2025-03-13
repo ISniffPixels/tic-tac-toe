@@ -41,8 +41,8 @@
         if (x) localStorage.setItem("player_x", x);
         if (o) localStorage.setItem("player_o", o);
 
-        player_x.textContent = `${x || "Player X"} is X`;
-        player_o.textContent = `${o || "Player O"} is O`;
+        player_x.textContent = `${x || "Player One"} is X`;
+        player_o.textContent = `${o || "Player Two"} is O`;
 
         score_x.textContent = `${store_scores.player_x}`;
         score_o.textContent = `${store_scores.player_o}`;

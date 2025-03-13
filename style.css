@@ -92,6 +92,10 @@ input {
     width: 100%;
 }
 
+.form_btn_center {
+    text-align: center;
+}
+
 .button_container {
     display: flex;
     align-items: center;
