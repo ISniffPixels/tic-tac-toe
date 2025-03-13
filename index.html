@@ -10,6 +10,8 @@
 <body>
     <div class="gameboard">
     <div class="player_backboard">
+        <legend>Tiny</legend>
+        <h2>TIC-TAC-TOE</h2>
         <div class="players_names">
             <div class="player_x"></div>
             <div class="player_o"></div>
@@ -37,6 +39,15 @@
             <button class="restart_btn">Play Again</button>
             <button class="score_reset_btn">Score Reset</button>
         </div>
+    </div>
+    <div class="name_entry_overlay">
+        <form onclick="return false">
+            <label for="player_one">Player One</label>
+            <input type="text" name="player_one" id="player_one" placeholder="Enter your name...">
+            <label for="player_two">Player Two</label>
+            <input type="text" name="player_two" id="player_two" placeholder="Enter your name...">
+            <button class="name_submit">TIC TAC TOE!</button>
+        </form>
     </div>
 </body>
 </html>

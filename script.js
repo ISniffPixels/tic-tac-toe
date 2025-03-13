@@ -5,15 +5,17 @@
     const winner_text = document.querySelector('.winner_text');
     const restart_btn = document.querySelector('.restart_btn');
     const score_reset_btn =  document.querySelector('.score_reset_btn');
+    const name_submit_btn = document.querySelector('.name_submit');
+    const overlay = document.querySelector('.name_entry_overlay');
     const player_x = document.querySelector('.player_x');
     const player_o = document.querySelector('.player_o');
-    const x = prompt("Enter name for player X...");
-    const o = prompt("Enter name for player O...");
     const score_x = document.querySelector('.score_x');
     const score_o = document.querySelector('.score_o');
     
+    // SAVES PLAYER SCORES IN BROWSER API
     let store_scores = JSON.parse(localStorage.getItem("store_scores")) || {player_x: 0, player_o: 0}
 
+    // COLLECTION OF ARRAYS REPRESENTING POSSIBLE WINNING COMBINATIONS THROUGH INDECEES.
     const xo_match = [
         [0, 1, 2],
         [3, 4, 5],
@@ -25,25 +27,44 @@
         [2, 4, 6]
     ];
 
+    // REPRESENTS INDIVIDUAL GRIDS AND THEIR POSITIONS
     let cell_placeholders = ["", "", "", "", "", "", "", "", ""];
     let active_player = "X";
     let game_status = false;
 
-    function startGame() {   
-        player_x.textContent = `${x} is X`;
-        player_o.textContent = `${o} is O`;
+    function startGame() { 
+        // STORED NAME INPUT FROM OVERLAY FORM BEFORE GAME STARTS
+        const x = document.querySelector('#player_one').value.trim();
+        const o = document.querySelector('#player_two').value.trim();
+
+        // SAVES NAMES ENTERED INTO BROWSWER API
+        if (x) localStorage.setItem("player_x", x);
+        if (o) localStorage.setItem("player_o", o);
+
+        player_x.textContent = `${x || "Player X"} is X`;
+        player_o.textContent = `${o || "Player O"} is O`;
 
         score_x.textContent = `${store_scores.player_x}`;
         score_o.textContent = `${store_scores.player_o}`;
-    
+
         grid_cells.forEach(cell => cell.addEventListener('click', clickCell));
-        restart_btn.addEventListener('click', playAgain);
-        score_reset_btn.addEventListener('click', scoreReset);
         winner_text.textContent = `${active_player}'s turn`;
         game_status = true;
+
+        overlay.style.display = 'none';
     }
 
+    restart_btn.addEventListener('click', playAgain);
+    score_reset_btn.addEventListener('click', scoreReset);
 
+    window.addEventListener("DOMContentLoaded", () => {
+        const playerOneInput = document.querySelector('#player_one');
+        const playerTwoInput = document.querySelector('#player_two');
+    
+        playerOneInput.value = localStorage.getItem("player_x") || "";
+        playerTwoInput.value = localStorage.getItem("player_o") || "";
+    });
+     
     function clickCell() {
         const cellIndex = this.dataset.cellIndex;
 
@@ -105,7 +126,10 @@
         active_player = "X";
         cell_placeholders = ["", "", "", "", "", "", "", "", ""];
         winner_text.textContent = `${active_player}'s turn`;
-        grid_cells.forEach(cell => cell.textContent = "");
+        grid_cells.forEach(cell => {
+            cell.textContent = "";
+            cell.addEventListener('click', clickCell);
+        });
         game_status = true;
     }
 
@@ -117,5 +141,5 @@
         localStorage.setItem("store_scores", JSON.stringify(store_scores));
     }
 
-    startGame();
+    name_submit_btn.addEventListener('click', startGame);
 })();
