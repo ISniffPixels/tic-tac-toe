@@ -51,7 +51,8 @@
         winner_text.textContent = `${active_player}'s turn`;
         game_status = true;
 
-        overlay.style.display = 'none';
+        overlay.classList.add('name_entry_overlay_fade');
+        overlay.style.visibility = 'hidden';
     }
 
     restart_btn.addEventListener('click', playAgain);
@@ -96,13 +97,23 @@
             if(cellA === "" || cellB === "" || cellC === "") continue;
             if(cellA === cellB && cellB === cellC) {
                 winnerFound = true;
+                winner.forEach((i) => {
+                    grid_cells[i].setAttribute('style', 'animation: scaleFont 1s ease-in-out');
+                    // TERNARY OPERATOR APPROACH TO ASSIGN WINNING COLORS FOR X AND O MATCHES
+                    active_player === 'X' ?
+                    grid_cells[i].style.backgroundColor = 'lightgreen' :
+                    grid_cells[i].style.backgroundColor = 'pink'
+                    grid_cells[i].style.transition = '1s';
+                });
+
                 break;
             }
        }
 
         if (winnerFound) {
             winner_text.textContent = `${active_player} wins!`;
-            if(active_player === "X") {
+
+            if(active_player === "X") {  
                 store_scores.player_x++;
                 score_x.textContent = `${store_scores.player_x}`;
             } else if(active_player === "O") {
@@ -128,6 +139,9 @@
         winner_text.textContent = `${active_player}'s turn`;
         grid_cells.forEach(cell => {
             cell.textContent = "";
+            cell.style.backgroundColor = "";
+            cell.style.animation = "";
+            cell.style.transition = "";
             cell.addEventListener('click', clickCell);
         });
         game_status = true;
