@@ -1,5 +1,6 @@
 'use strict';
 
+// IIFE FOR ENCAPSULATION OF PROPERTIES AND FUNCTIONS
 (function() {
     const grid_cells = document.querySelectorAll('.grid_cell');
     const winner_text = document.querySelector('.winner_text');
