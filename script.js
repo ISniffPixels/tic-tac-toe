@@ -8,6 +8,7 @@
     const score_reset_btn =  document.querySelector('.score_reset_btn');
     const name_submit_btn = document.querySelector('.name_submit');
     const overlay = document.querySelector('.name_entry_overlay');
+    const form = document.querySelector('form');
     const player_x = document.querySelector('.player_x');
     const player_o = document.querySelector('.player_o');
     const score_x = document.querySelector('.score_x');
@@ -52,8 +53,11 @@
         winner_text.textContent = `${x || "Player 1"}'s turn`;
         game_status = true;
 
-        overlay.classList.add('name_entry_overlay_fade');
-        overlay.style.visibility = 'hidden';
+        form.style.animation = 'form_rise 1600ms ease-in-out';
+        setTimeout(()=> {
+            overlay.classList.add('name_entry_overlay_fade');
+            overlay.style.visibility = 'hidden';
+        }, 1000);
     }
 
     restart_btn.addEventListener('click', playAgain);
@@ -143,7 +147,6 @@
 
     function playAgain() {
         const x = document.querySelector('#player_one').value.trim();
-        const o = document.querySelector('#player_two').value.trim();
 
         active_player = "X";
         cell_placeholders = ["", "", "", "", "", "", "", "", ""];
@@ -155,6 +158,7 @@
             cell.style.transition = "";
             cell.addEventListener('click', clickCell);
         });
+
         game_status = true;
     }
 
