@@ -9,9 +9,8 @@
 </head>
 <body>
     <div class="gameboard">
-    <div class="player_backboard">
-        <legend>Tiny</legend>
-        <h2>TIC-TAC-TOE</h2>
+        <div class="player_backboard">
+        <legend>TIC-TAC-TOE</legend>
         <div class="players_names">
             <div class="player_x"></div>
             <div class="player_o"></div>
@@ -22,8 +21,8 @@
             <label>Score:</label>
             <div class="score_o">0</div>
         </div>
-    </div>
-        <h2 class="winner_text"></h2>
+        </div>
+        <h3 class="winner_text"></h3>
         <div class="grid_container">
             <div class="grid_cell" data-cell-index="0"></div>
             <div class="grid_cell" data-cell-index="1"></div>
@@ -39,12 +38,13 @@
             <button class="restart_btn">Play Again</button>
             <button class="score_reset_btn">Score Reset</button>
         </div>
+        <div class="publisher">Hugo Angel &copy; 2025</div>
     </div>
     <div class="name_entry_overlay">
         <form onclick="return false">
-            <label for="player_one">Player One</label>
+            <label for="player_one">Player 1</label>
             <input type="text" name="player_one" id="player_one" placeholder="Enter name...">
-            <label for="player_two">Player Two</label>
+            <label for="player_two">Player 2</label>
             <input type="text" name="player_two" id="player_two" placeholder="Enter name...">
             <div class="form_btn_center">
                 <button class="name_submit">Play Game</button>

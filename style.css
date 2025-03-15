@@ -25,6 +25,11 @@ body {
 }
 
 .name_entry_overlay {
+    background-image: url('tic_tac_toe_bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
     display: grid;
     place-content: center;
 
@@ -69,6 +74,7 @@ input {
 }
 
 .grid_container {
+    background-color: white;
     display: grid;
     grid-template-columns: repeat(3, auto);
     width: 225px;
@@ -95,7 +101,18 @@ input {
     100% {transform: scale(1);}
 }
 
+.publisher {
+    font-size: smaller;
+    font-weight: bolder;
+    font-variant: small-caps;
+    width: fit-content;
+}
+
 .gameboard {
+    background-image: url('tic_tac_toe_bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,8 +138,9 @@ input {
 .players_names {
     display: flex;
     justify-content: space-between;
+    word-wrap: break-word;
+    word-break: break-all;
     width: 225px;
-    gap: 50px;
     font-weight: bolder;
 }
 
@@ -141,7 +159,7 @@ input {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 
     background-color: antiquewhite;
     outline: 2px solid black;
@@ -159,8 +177,9 @@ input {
     font-size: 2rem;
     -webkit-text-stroke: 1px black;
     position: absolute;
-    left: 85px;
+    left: 7px;
     transform: translateY(-45px);
+    width: 100%;
 }
 
 .player_backboard h2 {

@@ -42,14 +42,14 @@
         if (x) localStorage.setItem("player_x", x);
         if (o) localStorage.setItem("player_o", o);
 
-        player_x.textContent = `${x || "Player One"} is X`;
-        player_o.textContent = `${o || "Player Two"} is O`;
+        player_x.textContent = `${x || "Player 1"} is X`;
+        player_o.textContent = `${o || "Player 2"} is O`;
 
         score_x.textContent = `${store_scores.player_x}`;
         score_o.textContent = `${store_scores.player_o}`;
 
         grid_cells.forEach(cell => cell.addEventListener('click', clickCell));
-        winner_text.textContent = `${active_player}'s turn`;
+        winner_text.textContent = `${x || "Player 1"}'s turn`;
         game_status = true;
 
         overlay.classList.add('name_entry_overlay_fade');
@@ -82,8 +82,12 @@
     }
 
     function switchPlayer() {
+        const x = document.querySelector('#player_one').value.trim();
+        const o = document.querySelector('#player_two').value.trim();
+
         active_player = (active_player === "X") ? "O" : "X";
-        winner_text.textContent = `${active_player}'s turn`;
+        active_player === "X" ? winner_text.textContent = `${x || "Player 1"}'s turn` :
+        winner_text.textContent = `${o || "Player 2"}'s turn`;
     }
 
     function winnerStatus() {
@@ -112,7 +116,10 @@
        }
 
         if (winnerFound) {
-            winner_text.textContent = `${active_player} wins!`;
+            const x = document.querySelector('#player_one').value.trim();
+            const o = document.querySelector('#player_two').value.trim();
+
+            active_player === "X" ? winner_text.textContent = `${x || "Player 1"} wins!` : winner_text.textContent = `${o || "Player 2"} wins!`;
 
             if(active_player === "X") {  
                 store_scores.player_x++;
@@ -124,7 +131,7 @@
        
             game_status = false;
         } else if (!cell_placeholders.includes("")) {
-            winner_text.textContent = `Draw!`;
+            winner_text.textContent = `It's a draw!`;
             game_status = false;
         } else {
             switchPlayer();
@@ -135,9 +142,12 @@
     }
 
     function playAgain() {
+        const x = document.querySelector('#player_one').value.trim();
+        const o = document.querySelector('#player_two').value.trim();
+
         active_player = "X";
         cell_placeholders = ["", "", "", "", "", "", "", "", ""];
-        winner_text.textContent = `${active_player}'s turn`;
+        winner_text.textContent = `${x || "Player 1"}'s turn`;
         grid_cells.forEach(cell => {
             cell.textContent = "";
             cell.style.backgroundColor = "";
@@ -149,9 +159,9 @@
     }
 
     function scoreReset() {
-        store_scores = {player_x: 0, player_o: 0};
         score_x.textContent = `${store_scores.player_x}`;
         score_o.textContent = `${store_scores.player_o}`;
+        store_scores = {player_x: 0, player_o: 0};
 
         localStorage.setItem("store_scores", JSON.stringify(store_scores));
     }
